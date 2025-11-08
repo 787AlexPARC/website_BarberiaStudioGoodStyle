@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Studio GOOD STYLE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #1a1a1a;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #b8941f;
+            transform: translateY(-3px);
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services {
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .map-container {
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+        
+        /* Estilos para el formulario de reserva */
+        .reservation-form {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            border-color: #d4af37;
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-label, .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .checkbox-label input, .radio-label input {
+            margin-right: 0.5rem;
+        }
+        
+        .package-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .package-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .package-card:hover {
+            border-color: #d4af37;
+        }
+        
+        .package-card.selected {
+            border-color: #d4af37;
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        
+        .package-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .package-price {
+            color: #d4af37;
+            font-weight: bold;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Estilos para la galería de imágenes */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            aspect-ratio: 1/1;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-section {
+            background-color: white;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-btn {
+            background: #f1f1f1;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: #d4af37;
+            color: white;
+        }
+        
+        /* Estilos para la sección de trabajos destacados */
+        .featured-work {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .featured-image {
+            max-width: 600px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 1.5rem;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .featured-description {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        /* Estilos para el grid de servicios con imágenes */
+        .services-with-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-image-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .service-image-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-image-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links li {
+            margin: 0 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #d4af37;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .reservation-form {
+                padding: 2rem 1.5rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">GOOD STYLE</div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#reserva">Reserva</a></li>
+                    <li><a href="#ubicacion">Ubicación</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Barber Studio GOOD STYLE</h1>
+            <p>El mejor estilo para el mejor hombre</p>
+            <a href="#reserva" class="btn">Reserva tu cita</a>
+        </div>
+    </section>
+
+    <section class="section services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos una amplia gama de servicios de barbería para satisfacer todas tus necesidades de estilo</p>
+            </div>
+            <div class="services-with-images">
+                <div class="service-image-card">
+                    <div class="service-image">
+                        <!-- Reemplaza con tu imagen de corte de cabello -->
+                        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Corte de cabello">
+                    </div>
+                    <div class="service-content">
+                        <h3>Corte de Cabello</h3>
+                        <p>Cortes modernos y clásicos adaptados a tu estilo personal.</p>
+                    </div>
+                </div>
+                <div class="service-image-card">
+                    <div class="service-image">
+                        <!-- Reemplaza con tu imagen de afeitado -->
+                        <img src="https://www.elaristocrata.com/wp-content/uploads/2022/10/Fot4.jpeg" alt="Afeitado de barba">
+                    </div>
+                    <div class="service-content">
+                        <h3>Afeitado de Barba</h3>
+                        <p>Afeitado tradicional con navaja para un acabado perfecto.</p>
+                    </div>
+                </div>
+                <div class="service-image-card">
+                    <div class="service-image">
+                        <!-- Reemplaza con tu imagen de arreglo de barba -->
+                        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Arreglo de barba">
+                    </div>
+                    <div class="service-content">
+                        <h3>Arreglo de Barba</h3>
+                        <p>Diseño y mantenimiento de barba para un look impecable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section gallery-section" id="galeria">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galería de Trabajos</h2>
+                <p>Mira algunos de nuestros mejores trabajos y estilos</p>
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="cortes">Cortes</button>
+                <button class="filter-btn" data-filter="barbas">Barbas</button>
+                <button class="filter-btn" data-filter="estilos">Estilos</button>
+            </div>
+            
+            <div class="gallery">
+                <!-- Reemplaza estas imágenes con las tuyas -->
+                <div class="gallery-item" data-category="cortes">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Corte moderno" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Corte Moderno</h3>
+                        <p>Estilo contemporáneo con detalles precisos</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="barbas">
+                    <img src="https://homme.mx/wp-content/uploads/2023/10/cada-cuanto-ir-a-la-barberia-homme-luxury-barbers-01.jpg" alt="Barba bien cuidada" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Barba Estilo</h3>
+                        <p>Barba perfectamente recortada y definida</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="estilos">
+                    <img src="https://i.pinimg.com/236x/b1/d0/19/b1d0190cbf23dba4b9add1b5d3224cc8.jpg" alt="Estilo clásico" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Estilo Clásico</h3>
+                        <p>Elegancia atemporal para el hombre moderno</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="cortes">
+                    <img src="https://i.pinimg.com/originals/bf/6b/39/bf6b39a5038e81d68ec138d380ce9126.jpg" alt="Corte fade" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Corte Fade</h3>
+                        <p>Transición perfecta desde largo a corto</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="barbas">
+                    <img src="https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/W2SNCPSRJJAITA7XHVILOQTEMI.jpg" alt="Barba larga" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Barba Larga</h3>
+                        <p>Mantenimiento y cuidado de barbas largas</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="estilos">
+                    <img src="https://i.pinimg.com/originals/aa/5d/f8/aa5df8fb7b0d470bdb88abfca075ec8d.jpg" alt="Estilo urbano" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Estilo Urbano</h3>
+                        <p>Para el hombre que sigue las tendencias</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="reserva">
+        <div class="container">
+            <div class="section-title">
+                <h2>Reserva tu Cita</h2>
+                <p>Completa el formulario para agendar tu cita en GOOD STYLE</p>
+            </div>
+            <form class="reservation-form" id="reservationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nombre completo *</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono *</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Fecha de la cita *</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tipo de corte deseado *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="cutType" value="clasico" required> Corte Clásico
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="cutType" value="moderno"> Corte Moderno
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="cutType" value="degradado"> Degradado
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="cutType" value="fade"> Fade
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="cutType" value="buzz"> Buzz Cut
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Modelo o estilo específico</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="style" value="texturizado"> Texturizado
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="style" value="lineas"> Líneas o Diseños
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="style" value="cejas"> Arreglo de Cejas
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="style" value="navaja"> Trabajo con Navaja
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Paquetes de servicios</label>
+                    <div class="package-options">
+                        <div class="package-card" data-package="basico">
+                            <div class="package-name">Básico</div>
+                            <div class="package-desc">Corte + Lavado</div>
+                            <div class="package-price">S/ 25</div>
+                        </div>
+                        <div class="package-card" data-package="estandar">
+                            <div class="package-name">Estándar</div>
+                            <div class="package-desc">Corte + Barba + Lavado</div>
+                            <div class="package-price">S/ 40</div>
+                        </div>
+                        <div class="package-card" data-package="premium">
+                            <div class="package-name">Premium</div>
+                            <div class="package-desc">Corte + Barba + Mascarilla + Lavado</div>
+                            <div class="package-price">S/ 55</div>
+                        </div>
+                        <div class="package-card" data-package="completo">
+                            <div class="package-name">Completo</div>
+                            <div class="package-desc">Corte + Barba + Cejas + Mascarilla + Lavado</div>
+                            <div class="package-price">S/ 65</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedPackage" name="selectedPackage">
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Comentarios adicionales</label>
+                    <textarea id="comments" class="form-control" placeholder="Describe cualquier detalle adicional sobre tu corte o estilo deseado..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Confirmar Reserva</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="section" id="ubicacion">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Ubicación</h2>
+                <p>Visítanos en nuestro local, estamos ubicados en una zona céntrica y de fácil acceso</p>
+            </div>
+            <div class="map-container">
+                <!-- Mapa de Google Maps -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.847422714445!2d-75.1955624!3d-12.0511362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910e970029b7cee5%3A0x22975cf9b544296b!2sBarber%20studio%20GOOD%20STYLE!5e0!3m2!1ses!2spe!4v1712345678901!5m2!1ses!2spe" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contáctanos</h2>
+                <p>Estamos aquí para atenderte y responder cualquier pregunta que tengas</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Dirección</h3>
+                    <p>Barber Studio GOOD STYLE<br>Jose Olaya 160, Huancayo 12001</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <h3>Teléfono</h3>
+                    <p>+51 914 649 951</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Horario</h3>
+                    <p>Lun - Sáb: 9:30 AM - 10:00 PM<br>Dom: 10:00 AM - 10:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="gallery" style="margin-top: 3rem;">
+                <div class="gallery-item">
+                    <!-- Reemplaza con imagen de tu local -->
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyNIZ8zkjnmIiLwyRlrylenzGLZF7mnp4JKVdJnEh2laHGrJKFrRs08XR2S7Vx1qBk8V3dhiZxzSZa9T3QGJAM8pq8bor9sSz6u-tRtaiSu_xhCvmOp4b24niK9pGtaPDtwjcQSx6VXewkz=s1360-w1360-h1020-rw" alt="Nuestro local" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Nuestro Local</h3>
+                        <p>Ambiente cómodo y profesional</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <!-- Reemplaza con imagen de tu equipo -->
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzmJnj_TrPTB7HJowYUpPihXaU8dhXJ4PVPJ1qW7d4uBVgmsOsKbMEHlEQHiAsgQV9BlkQUGrbJlIZ5fZ935eq--tnVlYpvKFSKMiIznQR7ueVJKDVSl6AYo63-wzHAxJ35o6LXM4E7UAp9=s1360-w1360-h1020-rw" alt="Nuestro equipo" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Nuestro Equipo</h3>
+                        <p>Barberos profesionales y certificados</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <!-- Reemplaza con imagen de tus herramientas -->
+                    <img src="https://cortapelosyplanchas.com/blog/wp-content/uploads/2025/07/herramientas-para-barberos.png" alt="Herramientas profesionales" class="gallery-img">
+                    <div class="gallery-caption">
+                        <h3>Herramientas Profesionales</h3>
+                        <p>Utilizamos lo mejor para tu estilo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">GOOD STYLE</div>
+                <p>Barbería de calidad con los mejores estilos para hombres</p>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/good_styl3_"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.tiktok.com/@good_styl3"><i class="fab fa-tiktok"></i></a></li>
+                </ul>
+                <p>&copy; 2025 Barber Studio GOOD STYLE. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Selección de paquetes
+        document.querySelectorAll('.package-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Remover selección anterior
+                document.querySelectorAll('.package-card').forEach(c => {
+                    c.classList.remove('selected');
+                });
+                
+                // Agregar selección actual
+                this.classList.add('selected');
+                
+                // Actualizar campo oculto
+                document.getElementById('selectedPackage').value = this.getAttribute('data-package');
+            });
+        });
+        
+        // Manejo del formulario
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validación básica
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const cutType = document.querySelector('input[name="cutType"]:checked');
+            const package = document.getElementById('selectedPackage').value;
+            
+            if (!name || !phone || !date || !cutType) {
+                alert('Por favor, completa todos los campos obligatorios (*)');
+                return;
+            }
+            
+            if (!package) {
+                alert('Por favor, selecciona un paquete de servicios');
+                return;
+            }
+            
+            // Simulación de envío
+            alert('¡Reserva enviada con éxito! Te contactaremos pronto para confirmar tu cita.');
+            this.reset();
+            
+            // Limpiar selección de paquetes
+            document.querySelectorAll('.package-card').forEach(c => {
+                c.classList.remove('selected');
+            });
+        });
+        
+        // Filtrado de galería
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Agregar clase active al botón clickeado
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
