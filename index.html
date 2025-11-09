@@ -107,6 +107,15 @@
             transform: translateY(-3px);
         }
         
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
+        
         .section {
             padding: 5rem 0;
         }
@@ -288,6 +297,19 @@
         textarea.form-control {
             min-height: 120px;
             resize: vertical;
+        }
+        
+        .whatsapp-notice {
+            background: #25D366;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .whatsapp-notice i {
+            margin-right: 0.5rem;
         }
         
         /* Estilos para la galería de imágenes */
@@ -637,6 +659,12 @@
                 <h2>Reserva tu Cita</h2>
                 <p>Completa el formulario para agendar tu cita en GOOD STYLE</p>
             </div>
+            
+            <div class="whatsapp-notice">
+                <i class="fab fa-whatsapp"></i>
+                <strong>Tu reserva se enviará directamente por WhatsApp</strong>
+            </div>
+            
             <form class="reservation-form" id="reservationForm">
                 <div class="form-row">
                     <div class="form-group">
@@ -644,86 +672,115 @@
                         <input type="text" id="name" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Teléfono *</label>
-                        <input type="tel" id="phone" class="form-control" required>
+                        <label for="phone">Tu WhatsApp *</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="+51 123 456 789" required>
                     </div>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="email">Correo electrónico</label>
+                        <label for="email">Correo electrónico (opcional)</label>
                         <input type="email" id="email" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="date">Fecha de la cita *</label>
+                        <label for="date">Fecha deseada *</label>
                         <input type="date" id="date" class="form-control" required>
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <label>Tipo de corte deseado *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="cutType" value="clasico" required> Corte Clásico
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="cutType" value="moderno"> Corte Moderno
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="cutType" value="degradado"> Degradado
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="cutType" value="fade"> Fade
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="cutType" value="buzz"> Buzz Cut
-                        </label>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="time">Hora preferida *</label>
+                        <select id="time" class="form-control" required>
+                            <option value="">Selecciona una hora</option>
+                            <option value="09:30">09:30 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="10:30">10:30 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="11:30">11:30 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="12:30">12:30 PM</option>
+                            <option value="13:00">01:00 PM</option>
+                            <option value="13:30">01:30 PM</option>
+                            <option value="14:00">02:00 PM</option>
+                            <option value="14:30">02:30 PM</option>
+                            <option value="15:00">03:00 PM</option>
+                            <option value="15:30">03:30 PM</option>
+                            <option value="16:00">04:00 PM</option>
+                            <option value="16:30">04:30 PM</option>
+                            <option value="17:00">05:00 PM</option>
+                            <option value="17:30">05:30 PM</option>
+                            <option value="18:00">06:00 PM</option>
+                            <option value="18:30">06:30 PM</option>
+                            <option value="19:00">07:00 PM</option>
+                            <option value="19:30">07:30 PM</option>
+                            <option value="20:00">08:00 PM</option>
+                            <option value="20:30">08:30 PM</option>
+                            <option value="21:00">09:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de corte deseado *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="cutType" value="Corte Clásico" required> Corte Clásico
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="cutType" value="Corte Moderno"> Corte Moderno
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="cutType" value="Degradado"> Degradado
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="cutType" value="Fade"> Fade
+                            </label>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label>Modelo o estilo específico</label>
+                    <label>Servicios adicionales</label>
                     <div class="checkbox-group">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="style" value="texturizado"> Texturizado
+                            <input type="checkbox" name="style" value="Texturizado"> Texturizado
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="style" value="lineas"> Líneas o Diseños
+                            <input type="checkbox" name="style" value="Líneas o Diseños"> Líneas o Diseños
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="style" value="cejas"> Arreglo de Cejas
+                            <input type="checkbox" name="style" value="Arreglo de Cejas"> Arreglo de Cejas
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="style" value="navaja"> Trabajo con Navaja
+                            <input type="checkbox" name="style" value="Trabajo con Navaja"> Trabajo con Navaja
                         </label>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label>Paquetes de servicios</label>
+                    <label>Paquete deseado *</label>
                     <div class="package-options">
-                        <div class="package-card" data-package="basico">
+                        <div class="package-card" data-package="Básico - S/ 25">
                             <div class="package-name">Básico</div>
                             <div class="package-desc">Corte + Lavado</div>
                             <div class="package-price">S/ 25</div>
                         </div>
-                        <div class="package-card" data-package="estandar">
+                        <div class="package-card" data-package="Estándar - S/ 40">
                             <div class="package-name">Estándar</div>
                             <div class="package-desc">Corte + Barba + Lavado</div>
                             <div class="package-price">S/ 40</div>
                         </div>
-                        <div class="package-card" data-package="premium">
+                        <div class="package-card" data-package="Premium - S/ 55">
                             <div class="package-name">Premium</div>
-                            <div class="package-desc">Corte + Barba + Mascarilla + Lavado</div>
+                            <div class="package-desc">Corte + Barba + Mascarilla</div>
                             <div class="package-price">S/ 55</div>
                         </div>
-                        <div class="package-card" data-package="completo">
+                        <div class="package-card" data-package="Completo - S/ 65">
                             <div class="package-name">Completo</div>
-                            <div class="package-desc">Corte + Barba + Cejas + Mascarilla + Lavado</div>
+                            <div class="package-desc">Corte + Barba + Cejas + Mascarilla</div>
                             <div class="package-price">S/ 65</div>
                         </div>
                     </div>
-                    <input type="hidden" id="selectedPackage" name="selectedPackage">
+                    <input type="hidden" id="selectedPackage" name="selectedPackage" required>
                 </div>
                 
                 <div class="form-group">
@@ -731,7 +788,13 @@
                     <textarea id="comments" class="form-control" placeholder="Describe cualquier detalle adicional sobre tu corte o estilo deseado..."></textarea>
                 </div>
                 
-                <button type="submit" class="btn" style="width: 100%;">Confirmar Reserva</button>
+                <button type="submit" class="btn btn-whatsapp" style="width: 100%;">
+                    <i class="fab fa-whatsapp"></i> Enviar Reserva por WhatsApp
+                </button>
+                
+                <div style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    <i class="fas fa-info-circle"></i> Serás redirigido a WhatsApp para confirmar tu reserva
+                </div>
             </form>
         </div>
     </section>
@@ -828,6 +891,9 @@
     </footer>
 
     <script>
+        // CONFIGURACIÓN - CAMBIA ESTE NÚMERO POR EL DE TU BARBERÍA
+        const WHATSAPP_NUMBER = "51910772161"; // Número de GOOD STYLE
+
         // Selección de paquetes
         document.querySelectorAll('.package-card').forEach(card => {
             card.addEventListener('click', function() {
@@ -844,7 +910,7 @@
             });
         });
         
-        // Manejo del formulario
+        // Manejo del formulario PARA WHATSAPP
         document.getElementById('reservationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -852,27 +918,67 @@
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
             const cutType = document.querySelector('input[name="cutType"]:checked');
             const package = document.getElementById('selectedPackage').value;
             
-            if (!name || !phone || !date || !cutType) {
+            if (!name || !phone || !date || !time || !cutType || !package) {
                 alert('Por favor, completa todos los campos obligatorios (*)');
                 return;
             }
             
-            if (!package) {
-                alert('Por favor, selecciona un paquete de servicios');
-                return;
+            // Obtener servicios adicionales seleccionados
+            const additionalServices = [];
+            document.querySelectorAll('input[name="style"]:checked').forEach(checkbox => {
+                additionalServices.push(checkbox.value);
+            });
+            
+            const comments = document.getElementById('comments').value;
+            
+            // Formatear la fecha
+            const formattedDate = new Date(date).toLocaleDateString('es-ES', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Crear mensaje para WhatsApp
+            let message = `¡Hola! Quiero reservar una cita en GOOD STYLE:\n\n`;
+            message += `*Nombre:* ${name}\n`;
+            message += `*Teléfono:* ${phone}\n`;
+            message += `*Fecha deseada:* ${formattedDate}\n`;
+            message += `*Hora preferida:* ${time}\n`;
+            message += `*Tipo de corte:* ${cutType.value}\n`;
+            message += `*Paquete seleccionado:* ${package}\n`;
+            
+            if (additionalServices.length > 0) {
+                message += `*Servicios adicionales:* ${additionalServices.join(', ')}\n`;
             }
             
-            // Simulación de envío
-            alert('¡Reserva enviada con éxito! Te contactaremos pronto para confirmar tu cita.');
-            this.reset();
+            if (comments) {
+                message += `*Comentarios:* ${comments}\n`;
+            }
             
-            // Limpiar selección de paquetes
-            document.querySelectorAll('.package-card').forEach(c => {
-                c.classList.remove('selected');
-            });
+            message += `\nPor favor, confírmenme la disponibilidad. ¡Gracias!`;
+            
+            // Codificar el mensaje para URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Crear URL de WhatsApp
+            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+            
+            // Abrir WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Opcional: Resetear formulario
+            setTimeout(() => {
+                this.reset();
+                document.querySelectorAll('.package-card').forEach(c => {
+                    c.classList.remove('selected');
+                });
+                document.getElementById('selectedPackage').value = '';
+            }, 1000);
         });
         
         // Filtrado de galería
@@ -899,6 +1005,13 @@
                     });
                 });
             });
+            
+            // Validación de fecha (no permitir fechas pasadas)
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
         });
     </script>
 </body>
